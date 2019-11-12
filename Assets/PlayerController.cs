@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
-
+    private enum State {idle, running, jumping}
 
     private void Start()
     {
