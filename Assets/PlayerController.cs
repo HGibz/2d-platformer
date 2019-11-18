@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private State state = State.idle;
     private Collider2D coll;
     [SerializeField] private LayerMask ground;
+    [SerializeField] private float speed = 5f;
 
     private void Start()
 
@@ -27,12 +28,12 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            rb.velocity = new Vector2(-5, rb.velocity.y);
+            rb.velocity = new Vector2(-speed, rb.velocity.y);
             transform.localScale = new Vector2(-1, 1);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            rb.velocity = new Vector2(5, rb.velocity.y);
+            rb.velocity = new Vector2(speed, rb.velocity.y);
             transform.localScale = new Vector2(1, 1);
         }
         else 
