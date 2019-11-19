@@ -64,12 +64,15 @@ public class PlayerController : MonoBehaviour
         //jumping
         if (Input.GetButtonDown("Jump") && coll.IsTouchingLayers(ground))
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpforce);
-            state = State.jumping;
+            Jump();
         }
     }
 
     private void Jump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, jumpforce);
+        state = State.jumping;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -88,11 +91,12 @@ public class PlayerController : MonoBehaviour
             if(state == State.falling)
             {
                 Destroy(other.gameObject);
+                Jump();
             }
             else
             {
                 state = State.hurt;
-                if (other.gameObject.transform.position.x > transform.position.x)
+                if(other.gameObject.transform.position.x > transform.position.x)
                 {
                     //Enemy is too my right therefor i should be damaged and move left
                     rb.velocity = new Vector2(-hurtForce, rb.velocity.y);
