@@ -82,6 +82,13 @@ public class PlayerController : MonoBehaviour
             gem += 1;
             gemText.text = gem.ToString();
         }
+        if(collision.tag =="Power Up")
+        {
+            Destroy(collision.gameObject);
+            jumpforce = 35f;
+            GetComponent<SpriteRenderer>().color = Color.red;
+            StartCoroutine(ResetPower());
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -147,6 +154,12 @@ public class PlayerController : MonoBehaviour
       
     }
 
+   private IEnumerator ResetPower()
+    {
+        yield return new WaitForSeconds(5);
+        jumpforce = 20;
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
 
 
 }
