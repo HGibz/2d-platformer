@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
         if(collision.tag =="Power Up")
         {
             Destroy(collision.gameObject);
-            jumpforce = 35f;
+            jumpforce = 15f;
             GetComponent<SpriteRenderer>().color = Color.red;
             StartCoroutine(ResetPower());
         }
@@ -157,7 +157,7 @@ public class PlayerController : MonoBehaviour
    private IEnumerator ResetPower()
     {
         yield return new WaitForSeconds(5);
-        jumpforce = 20;
+        jumpforce = 10;
         GetComponent<SpriteRenderer>().color = Color.white;
     }
 
